@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+       
+        body {
+            margin: 0;
+             background-color: whitesmoke;
+ 
+        }
+       
+        #header,
+        #footer {
+            background-color: #F5F1E8;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+       
+        #header h1 {
+            text-align: center;
+        }
+       
+        #nav {
+            background-color: #3B3630;
+            height: 50px;
+        }
+       
+        #main {
+           
+            background-color: transparent;
+        }
+       
+        #aside {
+         
+            width: 20%;
+            float: left;
+            margin: 0px;
+            height: 100%;
+            padding: 10px;
+        }
+       
+        #section,
+        #article {
+         
+            width: 40%;
+            float: left;
+            margin: 0px;
+            height: auto;
+            padding: 10px;
+        }
+       
+        #footer {
+            height: 100px;
+            clear: both;
+            text-align: center;
+           
+        }
+       
+        p {
+            text-align: justify;
+        }
+       
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #8a663f;
+        }
+       
+        li {
+            float: left;
+        }
+       
+        li a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            color: #D4AF37;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+       
+        li a:hover {
+            background-color: burlywood;
+            color: black;
+        }
+       
+        @media screen and (max-width:800px) {
+            #aside,
+            #section,
+            #article {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <h1>This is a Header</h1>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
+    </nav>
+    <nav id="main">
+        <aside id="aside">
+            <h2>Aside</h2>
+            <p>i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i
+i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i i</p>
+        </aside>
+        <section id="section">
+            <h2>Section</h2>
+            <p>miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+</p>
+<p>
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+</p>
+<p>
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss
+miss miss miss miss miss miss miss miss miss miss</p>
+        </section>
+        <article id="article">
+            <h2>Article</h2>
+            <p>you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+</p>
+<p>
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+</p>
+<p>
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you
+you you you you you you you you you you, Baby</p>
+        </article>
+    </nav>
+    <footer id="footer">
+        <h2>This is a Footer</h2>
+    </footer>
+
+
+</body>
+
+</html>

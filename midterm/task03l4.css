@@ -1,0 +1,70 @@
+/* ============================================
+   Layout 4 – External CSS
+   Bootstrap Grid Responsive Card Layout
+   ============================================ */
+
+/* Wrapper / background */
+.layout4-wrapper {
+  background: #dce8f8;
+  border-radius: 6px;
+  padding: 28px 24px;
+}
+
+/* Section title */
+.layout4-title {
+  color: #1a44bb;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Card */
+.card-custom {
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 20px 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card number (01, 02, 03) */
+.card-num {
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+}
+
+/* Card body text */
+.card-text {
+  font-size: 0.75rem;
+  color: #333;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 16px;
+  font-family: Arial, sans-serif;
+  text-align: justify;
+}
+
+/* Read more button */
+.btn-readmore {
+  background-color: #17b6d8;
+  color: #ffffff;
+  border: none;
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.2s ease;
+}
+
+.btn-readmore:hover {
+  background-color: #1099b5;
+}
