@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSAU E-Wallet – Secure Payments</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- E-Wallet CSS -->
+  <link rel="stylesheet" href="ewallet.css" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg d-flex align-items-center">
+  <div class="container">
+    <a class="navbar-brand me-4" href="index1.html">
+      <div class="brand-logo">PSAU </div>
+      <div class="brand-text">
+        <span class="brand-name">PSAU Products</span>
+        <span class="brand-sub">Pampanga State Agricultural University</span>
+      </div>
+    </a>
+
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list fs-4" style="color:var(--green-main)"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item">
+          <a class="nav-link" href="index1.html">
+            <i class="bi bi-house-fill"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">
+            <i class="bi bi-shop-window"></i> Marketplace
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">
+            <i class="bi bi-wallet2"></i> E-Wallet
+          </a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" href="index1.html#about">
+            <i class="bi bi-info-circle"></i> About
+          </a>
+        </li>
+        <li class="nav-item ms-2">
+          <a class="nav-link btn-report-nav" href="index1.html#marketplace">
+            <i class="bi bi-cart-plus-fill"></i> Shop Now
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<section class="wallet-hero">
+  <div class="container position-relative" style="z-index: 10;">
+    <div class="text-center mb-5">
+      <div class="wallet-hero-eyebrow">
+        <i class="bi bi-shield-lock-fill"></i> PSAU Secure Ecosystem
+      </div>
+      <h1 class="wallet-hero-title">Virtual <span class="accent">E-Wallet</span> Dashboard</h1>
+      <p class="wallet-hero-sub">Manage your campus funds and digital payments in one secure place</p>
+    </div>
+
+    <div class="hero-dashboard-layout">
+      
+      <div class="hero-ewallet-card card-visa-style">
+        <div class="card-shine"></div>
+        <div class="card-inner-content">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="wallet-chip"></div>
+            <div class="visa-logo">VISA</div>
+          </div>
+          
+          <div class="hero-card-user mt-4">JUAN DELA CRUZ</div>
+          <div class="hero-card-number mt-1">**** **** **** 4821</div>
+          
+          <div class="mt-auto pt-4">
+            <div class="hero-card-balance-label">Current Balance</div>
+            <div class="hero-card-balance">₱ 14,850.50</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-actions-grid">
+        <button class="qa-box" onclick="openModal('topupModal')">
+          <div class="qa-icon-circle bg-green-main"><i class="bi bi-plus-circle-fill"></i></div>
+          <span>Top Up</span>
+        </button>
+        
+        <button class="qa-box" onclick="openModal('transferModal')">
+          <div class="qa-icon-circle bg-gold-main"><i class="bi bi-arrow-left-right"></i></div>
+          <span>Transfer</span>
+        </button>
+
+        <button class="qa-box" onclick="openModal('payModal')">
+          <div class="qa-icon-circle bg-green-light"><i class="bi bi-qr-code"></i></div>
+          <span>Pay QR</span>
+        </button>
+
+        <button class="qa-box" onclick="scrollToHistory()">
+          <div class="qa-icon-circle bg-green-dark"><i class="bi bi-clock-history"></i></div>
+          <span>History</span>
+        </button>
+
+        <button class="qa-box" onclick="openModal('withdrawModal')">
+          <div class="qa-icon-circle bg-danger-soft"><i class="bi bi-cash-stack"></i></div>
+          <span>Withdraw</span>
+        </button>
+
+        <button class="qa-box" onclick="openModal('linkModal')">
+          <div class="qa-icon-circle bg-gold-light"><i class="bi bi-link-45deg"></i></div>
+          <span>Link Account</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+ 
+
+
+<section class="section">
+  <div class="container">
+    <div class="wallet-dashboard-grid">
+
+      
+      <div id="historySection">
+        <div class="panel">
+          <div class="panel-header">
+            <h3 class="panel-title"><i class="bi bi-clock-history"></i> Transaction History</h3>
+            <!-- Filter Pills -->
+            <div class="txn-filter-pills">
+              <button class="txn-pill active" data-filter="all">All</button>
+              <button class="txn-pill" data-filter="topup">Top Up</button>
+              <button class="txn-pill" data-filter="payment">Payment</button>
+              <button class="txn-pill" data-filter="transfer">Transfer</button>
+              
+            </div>
+          </div>
+
+          <div class="txn-list" id="txnList">
+
+            <div class="txn-item" data-type="payment">
+              <div class="txn-icon txn-icon-out"><i class="bi bi-bag-check"></i></div>
+              <div class="txn-info">
+                <div class="txn-name">Organic Rice (5kg)</div>
+                <div class="txn-meta">PSAU Farm Unit 3 · May 8, 2026</div>
+                <div class="txn-badge badge-payment">Payment</div>
+              </div>
+              <div class="txn-amount txn-debit">− ₱ 275.00</div>
+            </div>
+
+            <div class="txn-item" data-type="topup">
+              <div class="txn-icon txn-icon-in"><i class="bi bi-plus-circle"></i></div>
+              <div class="txn-info">
+                <div class="txn-name">GCash Top Up</div>
+                <div class="txn-meta">Via GCash · May 5, 2026</div>
+                <div class="txn-badge badge-topup">Top Up</div>
+              </div>
+              <div class="txn-amount txn-credit">+ ₱ 500.00</div>
+            </div>
+
+            <div class="txn-item" data-type="payment">
+              <div class="txn-icon txn-icon-out"><i class="bi bi-bag-check"></i></div>
+              <div class="txn-info">
+                <div class="txn-name">PSAU Patches/Logo× 3</div>
+                <div class="txn-meta">PSAU OBA Unit · May 3, 2026</div>
+                <div class="txn-badge badge-payment">Payment</div>
+              </div>
+              <div class="txn-amount txn-debit">− ₱111 .00</div>
+            </div>
+
+            <div class="txn-item" data-type="transfer">
+              <div class="txn-icon txn-icon-transfer"><i class="bi bi-arrow-left-right"></i></div>
+              <div class="txn-info">
+                <div class="txn-name">Transfer to Juan dela Cruz</div>
+                <div class="txn-meta">PSAU Credits · Apr 30, 2026</div>
+                <div class="txn-badge badge-transfer">Transfer</div>
+              </div>
+              <div class="txn-amount txn-debit">− ₱ 150.00</div>
+            </div>
+
+           
+
+            <div class="txn-item" data-type="payment">
+              <div class="txn-icon txn-icon-out"><i class="bi bi-bag-check"></i></div>
+              <div class="txn-info">
+                <div class="txn-name">Tamarind Juice (350 ml)</div>
+                <div class="txn-meta">PSAU Agri-Food Lab · Apr 25, 2026</div>
+                <div class="txn-badge badge-payment">Payment</div>
+              </div>
+              <div class="txn-amount txn-debit">− ₱ 135.00</div>
+            </div>
+
+            <div class="txn-item" data-type="topup">
+              <div class="txn-icon txn-icon-in"><i class="bi bi-bank"></i></div>
+              <div class="txn-info">
+                <div class="txn-name">BDO Bank Transfer</div>
+                <div class="txn-meta">Via Online Banking · Apr 20, 2026</div>
+                <div class="txn-badge badge-topup">Top Up</div>
+              </div>
+              <div class="txn-amount txn-credit">+ ₱ 1,000.00</div>
+            </div>
+
+            <div class="txn-item" data-type="transfer">
+              <div class="txn-icon txn-icon-transfer"><i class="bi bi-arrow-left-right"></i></div>
+              <div class="txn-info">
+                <div class="txn-name">Received from Ana Reyes</div>
+                <div class="txn-meta">PSAU Credits · Apr 18, 2026</div>
+                <div class="txn-badge badge-transfer">Transfer</div>
+              </div>
+              <div class="txn-amount txn-credit">+ ₱ 200.00</div>
+            </div>
+
+          </div>
+
+          <div class="txn-empty" id="txnEmpty" style="display:none;">
+            <i class="bi bi-inbox"></i>
+            <p>No transactions found</p>
+          </div>
+
+          <div class="panel-footer">
+            <button class="btn-load-more">Load more transactions <i class="bi bi-chevron-down"></i></button>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="wallet-right-col">
+
+       
+        <div class="panel mb-3">
+          <div class="panel-header">
+            <h3 class="panel-title"><i class="bi bi-credit-card-2-front"></i> Linked Accounts</h3>
+            <button class="btn-link-small" onclick="openModal('linkModal')"><i class="bi bi-plus"></i> Add</button>
+          </div>
+          <div class="linked-list">
+            <div class="linked-item">
+              <div class="linked-icon linked-gcash"><i class="bi bi-phone-fill"></i></div>
+              <div class="linked-info">
+                <div class="linked-name">GCash</div>
+                <div class="linked-num">+63 912 *** 3847</div>
+              </div>
+              <span class="linked-status linked-active"><i class="bi bi-check-circle-fill"></i> Active</span>
+            </div>
+            <div class="linked-item">
+              <div class="linked-icon linked-maya"><i class="bi bi-phone-fill"></i></div>
+              <div class="linked-info">
+                <div class="linked-name">Maya</div>
+                <div class="linked-num">+63 917 *** 1120</div>
+              </div>
+              <span class="linked-status linked-active"><i class="bi bi-check-circle-fill"></i> Active</span>
+            </div>
+            <div class="linked-item">
+              <div class="linked-icon linked-bank"><i class="bi bi-bank2"></i></div>
+              <div class="linked-info">
+                <div class="linked-name">BDO Savings</div>
+                <div class="linked-num">**** **** 5021</div>
+              </div>
+              <span class="linked-status linked-active"><i class="bi bi-check-circle-fill"></i> Active</span>
+            </div>
+          </div>
+        </div>
+
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="features-bar">
+  <div class="container">
+    <div class="features-inner">
+      <div class="feature-item">
+        <div class="feature-icon"><i class="bi bi-shield-lock-fill"></i></div>
+        <div>
+          <div class="feature-title">256-bit Encryption</div>
+          <div class="feature-desc">Bank-grade SSL security on every transaction</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+        <div>
+          <div class="feature-title">Instant Top-Up</div>
+          <div class="feature-desc">GCash, Maya, and bank transfers — credited instantly</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="bi bi-receipt-cutoff"></i></div>
+        <div>
+          <div class="feature-title">Full Transaction Log</div>
+          <div class="feature-desc">Every peso tracked with date, time &amp; reference number</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
+        <div>
+          <div class="feature-title">Peer Transfers</div>
+          <div class="feature-desc">Send PSAU credits to any registered user instantly</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="section how-it-works">
+  <div class="container">
+    <div class="section-header" style="justify-content:center;text-align:center;display:block;margin-bottom:2.5rem;">
+      <h2 class="section-title">How the E-Wallet Works</h2>
+      <p style="font-size:13.5px;color:var(--gray-mid);margin-top:0.4rem;">Simple, fast, and secure in 4 steps</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon"><i class="bi bi-person-plus-fill"></i></div>
+        <div class="step-title">Register &amp; Verify</div>
+        <div class="step-desc">Create your PSAU account and complete identity verification to activate your wallet.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon"><i class="bi bi-plus-circle-fill"></i></div>
+        <div class="step-title">Top Up Balance</div>
+        <div class="step-desc">Load credits via GCash, Maya, or bank transfer. Your balance updates instantly.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon"><i class="bi bi-cart-check-fill"></i></div>
+        <div class="step-title">Shop &amp; Pay</div>
+        <div class="step-desc">Browse the marketplace and choose E-Wallet at checkout for a fast, contactless payment.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon"><i class="bi bi-graph-up-arrow"></i></div>
+        <div class="step-title">Track Everything</div>
+        <div class="step-desc">Monitor your balance, view spending analytics, and download receipts anytime.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <div class="cta-strip-title">Ready to get started?</div>
+        <div class="cta-strip-sub">Set up your PSAU E-Wallet in under 2 minutes.</div>
+      </div>
+      <div class="cta-strip-btns">
+        <button class="btn-report-nav" onclick="openModal('topupModal')">
+          <i class="bi bi-plus-circle"></i> Top Up Now
+        </button>
+        <a href="index1.html#marketplace" class="btn-outline-nav">
+          <i class="bi bi-shop-window"></i> Browse Products
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <div class="brand-logo" style="width:38px;height:38px;font-size:13px;">PSAU</div>
+          <span class="footer-brand-name">PSAU Products</span>
+        </div>
+        <p class="footer-brand-desc">The official marketplace of Pampanga State Agricultural University — connecting farms, faculty, and community.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">E-Wallet</div>
+        <ul>
+          <li><a href="#">Top Up</a></li>
+          <li><a href="#">Transfer Credits</a></li>
+          <li><a href="#">Transaction History</a></li>
+          <li><a href="#">Refunds</a></li>
+          <li><a href="#">Security Settings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">My Account</div>
+        <ul>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Support</div>
+        <ul>
+          <li><a href="#"><i class="bi bi-geo-alt me-1"></i>Magalang, Pampanga</a></li>
+          <li><a href="#"><i class="bi bi-envelope me-1"></i>wallet@psau.edu.ph</a></li>
+          <li><a href="#"><i class="bi bi-telephone me-1"></i>(045) 123-4567</a></li>
+        </ul>
+        <div class="footer-hours">Mon–Fri, 8AM–5PM</div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 <span>PSAU Products</span> · Pampanga State Agricultural University · All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scrollTop" aria-label="Scroll to top">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+
+<!-- Top Up Modal -->
+<div class="modal-overlay" id="topupModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title"><i class="bi bi-plus-circle-fill"></i> Top Up Wallet</div>
+      <button class="modal-close" onclick="closeModal('topupModal')"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-balance-row">
+        <span class="modal-balance-label">Current Balance</span>
+        <span class="modal-balance-val">₱ 1,250.00</span>
+      </div>
+      <label class="modal-label">Select Payment Method</label>
+      <div class="method-grid">
+        <button class="method-btn active-method" data-method="gcash"><i class="bi bi-phone-fill"></i> GCash</button>
+        <button class="method-btn" data-method="maya"><i class="bi bi-phone-fill"></i> Maya</button>
+        <button class="method-btn" data-method="bank"><i class="bi bi-bank2"></i> Bank Transfer</button>
+      </div>
+      <label class="modal-label mt-3">Amount to Top Up</label>
+      <div class="amount-presets">
+        <button class="preset-btn" onclick="setAmount(100)">₱ 100</button>
+        <button class="preset-btn" onclick="setAmount(200)">₱ 200</button>
+        <button class="preset-btn" onclick="setAmount(500)">₱ 500</button>
+        <button class="preset-btn" onclick="setAmount(1000)">₱ 1,000</button>
+      </div>
+      <input type="number" class="modal-input" id="topupAmount" placeholder="Or enter custom amount (₱)" min="50" />
+      <button class="btn-modal-confirm" onclick="confirmAction('topupModal', 'Top Up')">
+        <i class="bi bi-check-circle"></i> Confirm Top Up
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="transferModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title"><i class="bi bi-arrow-left-right"></i> Transfer Credits</div>
+      <button class="modal-close" onclick="closeModal('transferModal')"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-balance-row">
+        <span class="modal-balance-label">Available Balance</span>
+        <span class="modal-balance-val">₱ 1,250.00</span>
+      </div>
+      <label class="modal-label">Recipient Username or Student ID</label>
+      <input type="text" class="modal-input" placeholder="e.g. juan.delacruz or 2024-001234" />
+      <label class="modal-label mt-2">Amount to Transfer</label>
+      <input type="number" class="modal-input" placeholder="₱ 0.00" min="10" />
+      <label class="modal-label mt-2">Note (optional)</label>
+      <input type="text" class="modal-input" placeholder="e.g. For the group order" />
+      <button class="btn-modal-confirm" onclick="confirmAction('transferModal', 'Transfer')">
+        <i class="bi bi-check-circle"></i> Confirm Transfer
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="payModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title"><i class="bi bi-qr-code"></i> Scan to Pay</div>
+      <button class="modal-close" onclick="closeModal('payModal')"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="modal-body" style="text-align:center;">
+      <p style="font-size:13px;color:var(--gray-mid);margin-bottom:1.2rem;">Show this QR code to the seller or scan theirs to pay.</p>
+      <div class="qr-placeholder">
+        <div class="qr-inner">
+         <img src="images/qr.jpg" alt="My QR Code" class="real-qr-img">
+          <div style="font-size:11px;color:var(--gray-mid);margin-top:8px;">PSAU-4821-JCruz</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--gray-mid);margin-top:1rem;">QR refreshes every 60 seconds for security</div>
+      <button class="btn-modal-confirm mt-3" onclick="closeModal('payModal')">
+        <i class="bi bi-x-circle"></i> Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="withdrawModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title"><i class="bi bi-cash-stack"></i> Withdraw Funds</div>
+      <button class="modal-close" onclick="closeModal('withdrawModal')"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-balance-row">
+        <span class="modal-balance-label">Available Balance</span>
+        <span class="modal-balance-val">₱ 1,250.00</span>
+      </div>
+      <label class="modal-label">Withdraw To</label>
+      <div class="method-grid">
+        <button class="method-btn active-method"><i class="bi bi-phone-fill"></i> GCash</button>
+        <button class="method-btn"><i class="bi bi-bank2"></i> BDO Bank</button>
+      </div>
+      <label class="modal-label mt-3">Amount to Withdraw</label>
+      <input type="number" class="modal-input" placeholder="₱ 0.00 (min ₱ 100)" min="100" />
+      <div class="modal-note"><i class="bi bi-info-circle"></i> Withdrawals are processed within 1–3 business days.</div>
+      <button class="btn-modal-confirm" onclick="confirmAction('withdrawModal', 'Withdrawal')">
+        <i class="bi bi-check-circle"></i> Confirm Withdrawal
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="linkModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div class="modal-title"><i class="bi bi-link-45deg"></i> Link Payment Account</div>
+      <button class="modal-close" onclick="closeModal('linkModal')"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="modal-body">
+      <label class="modal-label">Select Account Type</label>
+      <div class="method-grid">
+        <button class="method-btn active-method"><i class="bi bi-phone-fill"></i> GCash</button>
+        <button class="method-btn"><i class="bi bi-phone-fill"></i> Maya</button>
+        <button class="method-btn"><i class="bi bi-bank2"></i> Bank</button>
+      </div>
+      <label class="modal-label mt-3">Mobile Number or Account Number</label>
+      <input type="text" class="modal-input" placeholder="+63 9XX XXX XXXX" />
+      <label class="modal-label mt-2">Account Name</label>
+      <input type="text" class="modal-input" placeholder="Full name as registered" />
+      <button class="btn-modal-confirm" onclick="confirmAction('linkModal', 'Link Account')">
+        <i class="bi bi-check-circle"></i> Link Account
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-msg" id="successToast">
+  <i class="bi bi-check-circle-fill"></i>
+  <span id="toastText">Action completed successfully!</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) closeModal(this.id);
+    });
+  });
+
+  function confirmAction(modalId, label) {
+    closeModal(modalId);
+    const toast = document.getElementById('successToast');
+    document.getElementById('toastText').textContent = label + ' request submitted successfully!';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+
+
+  function setAmount(val) {
+    document.getElementById('topupAmount').value = val;
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active-preset'));
+    event.target.classList.add('active-preset');
+  }
+
+  document.querySelectorAll('.method-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.closest('.method-grid').querySelectorAll('.method-btn').forEach(b => b.classList.remove('active-method'));
+      this.classList.add('active-method');
+    });
+  });
+
+  
+  document.querySelectorAll('.txn-pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      document.querySelectorAll('.txn-pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      const items = document.querySelectorAll('.txn-item');
+      let visible = 0;
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.type === filter) {
+          item.style.display = 'flex';
+          visible++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      document.getElementById('txnEmpty').style.display = visible === 0 ? 'flex' : 'none';
+    });
+  });
+
+  function scrollToHistory() {
+    document.getElementById('historySection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>

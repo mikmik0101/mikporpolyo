@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>PSAU Products – Shop</title>
+
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+ 
+  <link rel="stylesheet" href="styles.css" />
+ 
+  <link rel="stylesheet" href="products(1).css" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg d-flex align-items-center">
+  <div class="container">
+    <a class="navbar-brand me-4" href="index1.html">
+      <div class="brand-logo">PSAU</div>
+      <div class="brand-text">
+        <span class="brand-name">PSAU Products</span>
+        <span class="brand-sub">Pampanga State Agricultural University</span>
+      </div>
+    </a>
+    <button class="navbar-toggler border-0 shadow-none" type="button"
+            data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <i class="bi bi-list fs-4" style="color:var(--green-main)"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="index1.html"><i class="bi bi-house-fill"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#"><i class="bi bi-shop-window"></i> Marketplace</a></li>
+        <li class="nav-item"><a class="nav-link" href="ewallet.html"><i class="bi bi-wallet2"></i> E-Wallet</a></li>
+ 
+        <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-info-circle"></i> About</a></li>
+        <li class="nav-item ms-2">
+          <a class="nav-link btn-report-nav" href="#">
+            <i class="bi bi-cart-plus-fill"></i> Shop Now
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="shop-hero">
+  <div class="container">
+    <div class="shop-hero-inner">
+      <div>
+        <div class="shop-eyebrow"><i class="bi bi-shop-window"></i> PSAU Marketplace</div>
+        <h1 class="shop-title">Fresh Farm Products</h1>
+        <p class="shop-sub">Certified tamarind products, livestock, &amp; souvenir — directly from PSAU Farm Units</p>
+      </div>
+      <div class="shop-breadcrumb">
+        <a href="index1.html">Home</a>
+        <i class="bi bi-chevron-right"></i>
+        <span>Marketplace</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="cart-toast" id="cartToast">
+  <i class="bi bi-check-circle-fill"></i>
+  <span id="cartToastMsg">Item added to cart!</span>
+</div>
+
+
+<section class="shop-section">
+  <div class="container">
+
+    <!-- Mobile filter toggle -->
+    <button class="mobile-filter-toggle" id="mobileFilterToggle" onclick="toggleMobileFilters()">
+      <i class="bi bi-sliders"></i> Filters &amp; Search
+      <i class="bi bi-chevron-down ms-auto" id="filterChevron"></i>
+    </button>
+
+    <div class="shop-layout">
+
+      
+      <aside class="shop-sidebar" id="shopSidebar">
+
+       
+        <div class="sidebar-block">
+          <div class="sidebar-title">Search Products</div>
+          <div class="sidebar-search-wrap">
+            <i class="bi bi-search sidebar-search-icon"></i>
+            <input type="text" class="sidebar-search-input" id="sidebarSearch" placeholder="Type to search…" />
+          </div>
+        </div>
+
+  
+        <div class="sidebar-block">
+          <div class="sidebar-title">Category</div>
+          <div class="cat-filter-list">
+            <label class="cat-filter-item active" data-cat="All">
+              <input type="radio" name="category" value="All" checked hidden />
+              <span class="cat-filter-dot"></span>
+              All Products
+              <span class="cat-filter-count">21</span>
+            </label>
+            <label class="cat-filter-item" data-cat="Tamarind" id="tam">
+              <input type="radio" name="category" value="Tamarind" hidden />
+              <span class="cat-filter-dot"></span>
+              Tamarind 
+              <span class="cat-filter-count">6</span>
+            </label>
+            <label class="cat-filter-item" data-cat="Livestock">
+              <input type="radio" name="category" value="Livestock" hidden />
+              <span class="cat-filter-dot"></span>
+              Livestock
+              <span class="cat-filter-count">2</span>
+            </label>
+            <label class="cat-filter-item" data-cat="Rice">
+              <input type="radio" name="category" value="Rice" hidden />
+              <span class="cat-filter-dot"></span>
+              Rice
+              <span class="cat-filter-count">2</span>
+            </label>
+            <label class="cat-filter-item" data-cat="Trees">
+              <input type="radio" name="category" value="Trees" hidden />
+              <span class="cat-filter-dot"></span>
+              Trees
+              <span class="cat-filter-count">4</span>
+            </label>
+            <label class="cat-filter-item" data-cat="Souvenir & Uniform">
+              <input type="radio" name="category" value="Souvenir & Uniform" hidden />
+              <span class="cat-filter-dot"></span>
+            Souvenir & Uniform
+              <span class="cat-filter-count">7</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-title">Price Range</div>
+          <div class="price-range-wrap">
+            <input type="range" class="price-slider" id="priceSlider" min="0" max="1500" value="1500" step="10" />
+            <div class="price-range-labels">
+              <span>₱0</span>
+              <span id="priceVal">Up to ₱1500</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-title">Sort By</div>
+          <select class="sidebar-select" id="sortSelect">
+            <option value="default">Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A–Z</option>
+          </select>
+        </div>
+
+        <div class="sidebar-block cart-summary-block">
+          <div class="sidebar-title"><i class="bi bi-cart3 me-1"></i> My Cart</div>
+          <div class="cart-summary-empty" id="cartEmpty">No items yet.</div>
+          <div class="cart-items-list" id="cartItemsList"></div>
+          <div class="cart-total-row" id="cartTotalRow" style="display:none">
+            <span>Total</span>
+            <span id="cartTotal">₱0.00</span>
+          </div>
+          <button class="cart-checkout-btn" id="cartCheckoutBtn" style="display:none">
+            <i class="bi bi-bag-check-fill"></i> Proceed to Checkout
+          </button>
+        </div>
+
+      </aside>
+
+    
+      <div class="shop-main">
+
+        <div class="shop-toolbar">
+          <div class="showing-count" id="showingCount">Showing 24 products</div>
+          <div class="view-toggle">
+            <button class="view-btn active" id="gridViewBtn" title="Grid view"><i class="bi bi-grid-3x3-gap-fill"></i></button>
+            <button class="view-btn" id="listViewBtn" title="List view"><i class="bi bi-list-ul"></i></button>
+          </div>
+        </div>
+
+    
+        <div class="products-grid" id="productsGrid"></div>
+        <div class="no-results" id="noResults" style="display:none">
+          <i class="bi bi-search"></i>
+          <p>No products match your filters.</p>
+          <button class="btn-reset-filters" onclick="resetFilters()">Reset Filters</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content product-modal-content">
+      <button type="button" class="modal-close-btn" data-bs-dismiss="modal" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="modal-body p-0">
+        <div class="product-modal-grid">
+          <div class="product-modal-img-wrap" id="productModalImgWrap">
+            <div class="product-modal-emoji" id="modalEmoji" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;"></div>
+            <div class="product-modal-badge" id="modalBadge"></div>
+          </div>
+          <div class="product-modal-info">
+            <div class="product-modal-cat" id="modalCat"></div>
+            <h2 class="product-modal-name" id="modalName"></h2>
+            <div class="product-modal-price" id="modalPrice"></div>
+            <p class="product-modal-desc" id="modalDesc"></p>
+
+          
+            <div class="modal-qty-row">
+              <span class="modal-qty-label">Quantity</span>
+              <div class="modal-qty-control">
+                <button class="qty-btn" id="modalQtyMinus"><i class="bi bi-dash"></i></button>
+                <span class="qty-val" id="modalQtyVal">1</span>
+                <button class="qty-btn" id="modalQtyPlus"><i class="bi bi-plus"></i></button>
+              </div>
+            </div>
+
+          
+            <div class="modal-actions">
+              <button class="modal-btn modal-btn-cart" id="modalAddCart">
+                <i class="bi bi-cart-plus-fill"></i> Add to Cart
+              </button>
+              <button class="modal-btn modal-btn-buy" id="modalBuyNow">
+                <i class="bi bi-lightning-fill"></i> Buy Now
+              </button>
+              <button class="modal-btn modal-btn-reserve" id="modalReserve">
+                <i class="bi bi-bookmark-plus-fill"></i> Reserve
+              </button>
+            </div>
+
+            <div class="modal-meta-list">
+              <div class="modal-meta-item"><i class="bi bi-box-seam"></i> Available Stock: <strong id="modalStock"></strong></div>
+              <div class="modal-meta-item"><i class="bi bi-patch-check-fill"></i> PSAU Certified Organic</div>
+              <div class="modal-meta-item"><i class="bi bi-truck"></i> Delivery: 1–3 days (Metro Pampanga)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="reserve-overlay" id="reserveOverlay" onclick="closeReserveModal(event)">
+  <div class="reserve-modal" id="reserveModal">
+
+    <div class="reserve-modal-header">
+      <div class="reserve-header-left">
+        <i class="bi bi-bookmark-plus-fill"></i>
+        <span>Reserve Item</span>
+      </div>
+      <button class="reserve-close-btn" onclick="closeReserveModalDirect()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+  
+    <div class="reserve-modal-body">
+
+  
+      <div class="reserve-product-row">
+        <div class="reserve-img-display" id="reserveImgDisplay">
+          <img class="reserve-img-preview" id="reserveImgPreview" src="" alt="Product" style="display:none" />
+          <div class="reserve-emoji-fallback" id="reserveEmojiFallback"></div>
+          <span class="reserve-img-badge" id="reserveImgBadge"></span>
+        </div>
+
+        <div class="reserve-product-info">
+          <div class="reserve-product-cat" id="reserveProductCat"></div>
+          <div class="reserve-product-name" id="reserveProductName"></div>
+          <div class="reserve-product-price-unit">
+            <span class="reserve-unit-price-label">Unit Price</span>
+            <span class="reserve-unit-price" id="reserveUnitPrice"></span>
+          </div>
+          <div class="reserve-stock-row">
+            <i class="bi bi-box-seam"></i>
+            <span id="reserveStock"></span> available
+          </div>
+          <div class="reserve-desc" id="reserveDesc"></div>
+        </div>
+      </div>
+
+      <div class="reserve-divider"></div>
+
+      <!-- Pickup Date -->
+      <div class="reserve-field-group">
+        <label class="reserve-field-label">
+          <i class="bi bi-calendar3"></i> Pickup Date
+        </label>
+        <div class="reserve-date-row">
+          <input type="date" class="reserve-date-input" id="reserveDate" />
+          <div class="reserve-date-hint" id="reserveDateHint">
+            <i class="bi bi-info-circle"></i> Pick-up at PSAU Campus · Mon–Fri, 8AM–5PM
+          </div>
+        </div>
+      </div>
+      <div class="reserve-field-group">
+        <label class="reserve-field-label">
+          <i class="bi bi-layers"></i> Quantity
+        </label>
+        <div class="reserve-qty-total-row">
+          <div class="reserve-qty-control">
+            <button class="reserve-qty-btn" id="reserveQtyMinus" onclick="changeReserveQty(-1)">
+              <i class="bi bi-dash-lg"></i>
+            </button>
+            <span class="reserve-qty-val" id="reserveQtyVal">1</span>
+            <button class="reserve-qty-btn" id="reserveQtyPlus" onclick="changeReserveQty(1)">
+              <i class="bi bi-plus-lg"></i>
+            </button>
+          </div>
+          <div class="reserve-total-box">
+            <span class="reserve-total-label">Order Total</span>
+            <span class="reserve-total-val" id="reserveTotalVal">₱0.00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reserve-field-group">
+        <label class="reserve-field-label">
+          <i class="bi bi-chat-left-text"></i> Note <span class="reserve-optional">(optional)</span>
+        </label>
+        <textarea class="reserve-note-input" id="reserveNote" placeholder="Any special instructions for your reservation…" rows="2"></textarea>
+      </div>
+
+    </div>
+
+    <div class="reserve-modal-footer">
+      <div class="reserve-summary-line">
+        <span id="reserveSummaryText">Select a date and quantity to confirm</span>
+      </div>
+      <div class="reserve-footer-actions">
+        <button class="reserve-cancel-btn" onclick="closeReserveModalDirect()">Cancel</button>
+        <button class="reserve-confirm-btn" id="reserveConfirmBtn" onclick="confirmReservation()">
+          <i class="bi bi-bookmark-check-fill"></i> Confirm Reservation
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bn-overlay" id="buyNowOverlay" onclick="closeBuyNowModal(event)">
+  <div class="bn-shell" id="buyNowModal">
+
+   
+    <div class="bn-topbar">
+      <div class="bn-topbar-left">
+        <i class="bi bi-lightning-fill"></i>
+        <span>Quick Checkout</span>
+      </div>
+      <button class="bn-close" onclick="closeBuyNowDirect()"><i class="bi bi-x-lg"></i></button>
+    </div>
+
+   
+    <div class="bn-grid">
+
+      
+      <div class="bn-card">
+        <div class="bn-title">Delivery Address</div>
+
+        <div class="bn-section">
+          <div class="bn-section-label">Add New Address</div>
+          <input class="bn-input" type="text" placeholder="Recipient Name" />
+          <input class="bn-input" type="text" placeholder="Phone Number" />
+          <textarea class="bn-textarea" placeholder="Address Details"></textarea>
+          <input class="bn-input" type="text" placeholder="ZIP Code" />
+        </div>
+
+        <button class="bn-btn bn-btn-secondary">
+          <i class="bi bi-geo-alt-fill"></i> Save Address
+        </button>
+      </div>
+
+      <div class="bn-card">
+        <div class="bn-title">Payment Details</div>
+
+        <div class="bn-points">
+          <p class="bn-points-label">PSAU E-Wallet Points</p>
+          <h2 class="bn-points-val">1,250 pts</h2>
+        </div>
+
+        <div class="bn-section">
+          <div class="bn-section-label">Choose Payment Method</div>
+          <div class="bn-payment-list">
+            <label class="bn-payment-opt">
+              <span><i class="bi bi-wallet2"></i> PSAU E-Wallet</span>
+              <input type="radio" name="bnPayment" value="ewallet" />
+            </label>
+            <label class="bn-payment-opt">
+              <span><i class="bi bi-bag-fill"></i> Cash on Delivery (COD)</span>
+              <input type="radio" name="bnPayment" value="cod" />
+            </label>
+            <label class="bn-payment-opt">
+              <span><i class="bi bi-phone-fill"></i> GCash</span>
+              <input type="radio" name="bnPayment" value="gcash" />
+            </label>
+            <label class="bn-payment-opt">
+              <span><i class="bi bi-credit-card-fill"></i> Maya</span>
+              <input type="radio" name="bnPayment" value="maya" />
+            </label>
+          </div>
+        </div>
+
+        <div class="bn-section">
+          <div class="bn-section-label">Additional Notes</div>
+          <textarea class="bn-textarea" id="buyNowNote" placeholder="Add notes for seller or rider…"></textarea>
+        </div>
+
+        <button class="bn-btn bn-btn-primary" onclick="confirmBuyNow()">
+          <i class="bi bi-lightning-fill"></i> Place Order
+        </button>
+      </div>
+
+     
+      <div class="bn-card">
+        <div class="bn-title">Order Summary</div>
+
+        <div class="bn-product" id="buyNowProductRow">
+          <div class="bn-product-img" id="buyNowProductImgBox">
+            <img id="buyNowImgPreview" src="" alt="" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:14px;" />
+            <div id="buyNowEmojiFallback" class="bn-product-emoji"></div>
+          </div>
+          <div class="bn-product-details">
+            <div class="bn-product-cat" id="buyNowProductCat"></div>
+            <h4 class="bn-product-name" id="buyNowProductName"></h4>
+            <p class="bn-product-price" id="buyNowUnitPrice"></p>
+      
+            <div class="bn-qty-row">
+              <button class="bn-qty-btn" onclick="changeBuyNowQty(-1)"><i class="bi bi-dash"></i></button>
+              <span class="bn-qty-val" id="buyNowQtyVal">1</span>
+              <button class="bn-qty-btn" onclick="changeBuyNowQty(1)"><i class="bi bi-plus"></i></button>
+              <span class="bn-qty-badge" id="buyNowStockBadge"></span>
+            </div>
+          </div>
+        </div>
+
+       
+        <div class="bn-summary-item">
+          <span>Product Total</span>
+          <strong id="buyNowProductTotal">₱0.00</strong>
+        </div>
+        <div class="bn-summary-item">
+          <span>Shipping Fee</span>
+          <strong>₱50.00</strong>
+        </div>
+
+        <div class="bn-total">
+          <span>Total</span>
+          <span id="buyNowTotalVal">₱0.00</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <div class="brand-logo" style="width:38px;height:38px;font-size:13px;">PSAU</div>
+          <span class="footer-brand-name">PSAU Products</span>
+        </div>
+        <p class="footer-brand-desc">The official marketplace of Pampanga State Agricultural University — connecting farms, faculty, and community.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Marketplace</div>
+        <ul>
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Tamarind</a></li>
+          <li><a href="#">Livestock</a></li>
+          <li><a href="#">Rice</a></li>
+          <li><a href="#">Trees</a></li>
+          <li><a href="#">Souvenir &amp; Uniform</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">My Account</div>
+        <ul>
+          <li><a href="#">Register</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="#">E-Wallet</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul>
+          <li><a href="#"><i class="bi bi-geo-alt me-1"></i>Magalang, Pampanga</a></li>
+          <li><a href="#"><i class="bi bi-envelope me-1"></i>products@psau.edu.ph</a></li>
+          <li><a href="#"><i class="bi bi-telephone me-1"></i>(045) 123-4567</a></li>
+        </ul>
+        <div class="footer-hours">Mon–Fri, 8AM–5PM</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>PSAU Products</span> · Pampanga State Agricultural University · All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top"><i class="bi bi-chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+const products = [
+  
+  { id:1,  name:"Tamarind Juice (350ml)",   cat:"Tamarind",      price:60,  emoji:"🌽", badge:"Fresh",       stock:150, desc:"A refreshing drink made from natural tamarind fruit. It has a perfect balance of sweet and sour flavor that gives a cool and refreshing taste. Ideal for hot weather." },
+  { id:2,  name:"Tamarind Ice Cream",         cat:"Tamarind",      price:30,  emoji:"🥦", badge:"Organic",     stock:80,  desc:"A unique and delicious ice cream with the perfect combination of creamy sweetness and tangy tamarind flavor. Great for dessert lovers looking for something different." },
+  { id:3,  name:"Tamarind Jam",   cat:"Tamarind",      price:150, emoji:"🥕", badge:"Value Pack",  stock:60,  desc:"A sweet spread made from cooked tamarind fruit. Ideal for bread, crackers, and desserts, offering a fruity and tangy flavor." },
+  { id:4,  name:"Tamarind Candy",    cat:"Tamarind",      price:70,  emoji:"🍆", badge:"Fresh",       stock:90,  desc:"A tasty candy with a delighful mix of sweetness and sourness from tamarind. A favourite snack for both kids and adults." },
+  { id:5,  name:"Tamarind Wine",    cat:"Tamarind",      price:300,  emoji:"🍠", badge:"Organic",     stock:120, desc:"A special alcoholic beverage beverage made from fermented tamarind extract. It has unique aroma and rich flavor, perfect for special occasions." },
+  { id:6,  name:"Tamarind Vinegar Original",    cat:"Tamarind",      price:100,  emoji:"🍠", badge:"Organic",     stock:120, desc:"Natural vinegar made from tamarind with a flavorful sour taste. Ideal for cooking, dipping sauces, and food seasoning." },
+ 
+  // per kilo yung price ng sheep and goat. need natin n parng ilan per kilo//
+  { id:7,  name:"Liveweight Goat (per kilogram)", cat:"Livestock", price:230, emoji:"🥚", badge:"Best Seller", stock:300, desc:"Live sheep sold by weight and raised with proper care. ideal for meat production, breeding, and agricultural livelihood projects." },
+  { id:8,  name:"Liveweight Sheep (per kilogram)",    cat:"Livestock",  price:240, emoji:"🍗", badge:"Fresh",       stock:50,  desc:"Healthy live goats sold by weight, suitable for meat production, breeding, and farming purposes. Known for quality meat and strong adaptability." },
+
+  { id:9, name:"25kg Milled Rice (Maalsa)",   cat:"Rice",      price:1250,  emoji:"🥛", badge:"Premium",     stock:60,  desc:"High-quality milled rice with good grain texture and excellent cooking quality. Suitable for daily household consumption and commercial distribution" },
+  { id:10, name:"25kg Milled Rice (Buhaghag)", cat:"Rice",      price:1000,  emoji:"🧀", badge:"Artisan",     stock:30,  desc:"Premium-quality rice variety known for its soft texture, pleasant aroma, and satisfying taste. Ideal for families, retailers, and food businesses." },
+ 
+  { id:11, name:"Cacao",cat:"Trees",    price:100, emoji:"🐟", badge:"Best Seller", stock:80,  desc:"A tropical tree known for producing cocoa beans, the main ingredient in chocolate products. Cacao trees are valuable for both commercial farming and local food production." },
+  { id:12, name:"Kasoy",          cat:"Trees",     price:100,  emoji:"🐠", badge:"Fresh",       stock:100, desc:"Also known as cashew, this tree produces both cashew nuts and cashew apples. It is valued for its nutritious nuts and commercial importance." },
+  { id:13, name:"Rambutan", cat:"Trees",     price:1100, emoji:"🐡", badge:"Specialty",   stock:55,  desc:"A tropical fruit tree known for its hairy red fruits with juicy and sweet flesh. Rambutan is a refreshing fruit commonly enjoyed fresh." },
+  { id:14, name:"Langka",cat:"Trees",     price:100,  emoji:"🦐", badge:"Local Fave",  stock:70,  desc:"A tropical tree that bears large fruits with sweet yellow flesh. Jackfruit is commonly eaten fresh, cooked in dishes, or processed into snacks and desserts." },
+  
+  { id:15, name:"DKNY Cloth (Blouse/Polo) (per yard)",         cat:"Souvenir & Uniform",  price:132,  emoji:"🍍", badge:"Bestseller",  stock:90,  desc:"For blouse and polo. sold per yard" },
+  { id:16, name:"Checkered Cloth (Skirt) (per yard)", cat:"Souvenir & Uniform",  price:132, emoji:"🌭", badge:"Signature",   stock:45,  desc:"For the women's skirt. Sold per yard" },
+  { id:17, name:"Hamilton fabric (Black) (per yard)",cat:"Souvenir & Uniform",  price:168,  emoji:"🍬", badge:"Organic",     stock:60,  desc:"For men's slacks. Sold per yard" },
+  { id:18, name:"P.E Uniforms (pair)",cat:"Souvenir & Uniform", price:780,  emoji:"🥗", badge:"Local Fave",  stock:55,  desc:"Unisex P.E Uniform" },
+  { id:19, name:"NSTP Shirt",      cat:"Souvenir & Uniform",  price:360,  emoji:"🫙", badge:"Natural",     stock:75,  desc:"NSTP Shirt" },
+  { id:20, name:"PSAU ID Lace",      cat:"Souvenir & Uniform",  price:77,  emoji:"🫙", badge:"Natural",     stock:75,  desc:"PSAU ID Lace." },
+  { id:21, name:"Uniform Patches/Logo",      cat:"Souvenir & Uniform",  price:36,  emoji:"🫙", badge:"Natural",     stock:75,  desc:"PSAU Patches/Logo." },
+];
+
+let cart = [];
+let currentModalProduct = null;
+let modalQty = 1;
+let isGridView = true;
+let activeCategory = "All";
+let maxPrice = 1500;
+let searchQuery = "";
+let sortOrder = "default";
+
+const productImages = {
+   1: "images/tamarindjuice.jpg",
+   2: "images/icecream.jpg",
+   3: "images/jam.jpg",
+   4: "images/candy.jpg",
+   5: "images/wine.jpg",
+   6: "images/vinegar.jpg",
+   7: "images/goat.jpg",
+   8: "images/sheep.jpg",
+   9: "images/rice.jpg",
+   10: "images/rice.jpg",
+   11: "images/cacao.jpg",
+   12: "images/kasoy.jpg",
+   13: "images/rambutan.jpg",
+   14: "images/langka.jpg",
+   15: "images/dkny.jpg",
+   16: "images/checkeredcloth.jpg",
+   17: "images/hamilton.jpg",
+   18: "images/pe.jpg",
+   19: "images/nstp.jpg",
+   20: "images/lace.jpg",
+   21: "images/patches.jpg",
+};
+
+
+function getFilteredProducts() {
+  let list = [...products];
+  if (activeCategory !== "All") list = list.filter(p => p.cat === activeCategory);
+  list = list.filter(p => p.price <= maxPrice);
+  if (searchQuery.trim()) {
+    const q = searchQuery.toLowerCase();
+    list = list.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+  }
+  if (sortOrder === "price-asc")  list.sort((a,b) => a.price - b.price);
+  if (sortOrder === "price-desc") list.sort((a,b) => b.price - a.price);
+  if (sortOrder === "name-asc")   list.sort((a,b) => a.name.localeCompare(b.name));
+  return list;
+}
+
+function renderProducts() {
+  const grid = document.getElementById("productsGrid");
+  const noRes = document.getElementById("noResults");
+  const list = getFilteredProducts();
+
+  document.getElementById("showingCount").textContent =
+    `Showing ${list.length} product${list.length !== 1 ? "s" : ""}`;
+
+  if (!list.length) {
+    grid.innerHTML = "";
+    noRes.style.display = "flex";
+    return;
+  }
+  noRes.style.display = "none";
+
+  grid.className = isGridView ? "products-grid" : "products-list";
+
+  grid.innerHTML = list.map(p => `
+    <div class="product-card ${isGridView ? "" : "list-card"}" data-id="${p.id}">
+      <div class="pc-img-wrap">
+        ${productImages[p.id]
+          ? `<img class="pc-img" src="${productImages[p.id]}" alt="${p.name}" />`
+          : `<div class="pc-emoji">${p.emoji}</div>`}
+      </div>
+      <div class="pc-body">
+        <div class="pc-cat-tag">${p.cat}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-price">₱${p.price.toFixed(2)}</div>
+        <div class="pc-stock-row"><i class="bi bi-box-seam"></i> ${p.stock} in stock</div>
+        <div class="pc-actions">
+          <button class="pc-btn pc-btn-buy" onclick="quickBuyNow(${p.id}, event)">
+            <i class="bi bi-lightning-fill"></i> Buy Now
+          </button>
+          <button class="pc-btn pc-btn-reserve" onclick="quickReserve(${p.id}, event)">
+            <i class="bi bi-bookmark-plus-fill"></i> Reserve
+          </button>
+        </div>
+        <div class="pc-atc-row">
+          <div class="pc-qty-control">
+            <button class="pc-qty-btn" onclick="pcQtyChange(${p.id}, -1, event)"><i class="bi bi-dash"></i></button>
+            <span class="pc-qty-val" id="pcQty-${p.id}">1</span>
+            <button class="pc-qty-btn" onclick="pcQtyChange(${p.id}, 1, event)"><i class="bi bi-plus"></i></button>
+          </div>
+          <button class="pc-atc-btn" onclick="pcAddToCart(${p.id}, event)">
+            <i class="bi bi-cart-plus-fill"></i> Add to Cart
+          </button>
+        </div>
+        <button class="pc-details-btn" onclick="openModal(${p.id})">View Details</button>
+      </div>
+    </div>
+  `).join("");
+
+ 
+  grid.querySelectorAll(".product-card").forEach((c, i) => {
+    c.style.animationDelay = `${i * 0.04}s`;
+    c.classList.add("card-enter");
+  });
+}
+
+function addToCart(productId, qty = 1) {
+  const p = products.find(x => x.id === productId);
+  const existing = cart.find(x => x.id === productId);
+  if (existing) existing.qty += qty;
+  else cart.push({ ...p, qty });
+  renderCart();
+  showToast(`${p.name} added to cart!`);
+}
+
+function renderCart() {
+  const list = document.getElementById("cartItemsList");
+  const empty = document.getElementById("cartEmpty");
+  const totalRow = document.getElementById("cartTotalRow");
+  const checkoutBtn = document.getElementById("cartCheckoutBtn");
+  const totalEl = document.getElementById("cartTotal");
+
+  if (!cart.length) {
+    empty.style.display = "block";
+    list.innerHTML = "";
+    totalRow.style.display = "none";
+    checkoutBtn.style.display = "none";
+    return;
+  }
+
+  empty.style.display = "none";
+  totalRow.style.display = "flex";
+  checkoutBtn.style.display = "flex";
+
+  list.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <span class="cart-item-emoji">${item.emoji}</span>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-meta">₱${item.price} × ${item.qty}</div>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
+        <i class="bi bi-x"></i>
+      </button>
+    </div>
+  `).join("");
+
+  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  totalEl.textContent = `₱${total.toFixed(2)}`;
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(x => x.id !== id);
+  renderCart();
+}
+
+function quickAddToCart(id, e) { e.stopPropagation(); addToCart(id); }
+function quickBuyNow(id, e)    { e.stopPropagation(); openBuyNowModal(id); }
+function quickReserve(id, e)   { e.stopPropagation(); openReserveModal(id); }
+
+
+const cardQty = {}; 
+
+function pcQtyChange(id, delta, e) {
+  e.stopPropagation();
+  const p = products.find(x => x.id === id);
+  if (!cardQty[id]) cardQty[id] = 1;
+  cardQty[id] = Math.max(1, Math.min(p.stock, cardQty[id] + delta));
+  const el = document.getElementById(`pcQty-${id}`);
+  if (el) el.textContent = cardQty[id];
+}
+
+function pcAddToCart(id, e) {
+  e.stopPropagation();
+  const qty = cardQty[id] || 1;
+  addToCart(id, qty);
+  // Reset qty display
+  cardQty[id] = 1;
+  const el = document.getElementById(`pcQty-${id}`);
+  if (el) el.textContent = 1;
+}
+
+function populateImgDisplay(productId, previewEl, fallbackEl, badgeEl) {
+  const p = products.find(x => x.id === productId);
+  badgeEl.textContent = p.badge;
+  if (productImages[productId]) {
+    previewEl.src = productImages[productId];
+    previewEl.style.display = "block";
+    fallbackEl.style.display = "none";
+  } else {
+    previewEl.style.display = "none";
+    fallbackEl.textContent = p.emoji;
+    fallbackEl.style.display = "flex";
+  }
+}
+
+let reserveProduct = null;
+let reserveQty = 1;
+
+function openReserveModal(id) {
+  reserveProduct = products.find(x => x.id === id);
+  reserveQty = 1;
+
+  populateImgDisplay(id,
+    document.getElementById("reserveImgPreview"),
+    document.getElementById("reserveEmojiFallback"),
+    document.getElementById("reserveImgBadge")
+  );
+
+  document.getElementById("reserveProductCat").textContent   = reserveProduct.cat;
+  document.getElementById("reserveProductName").textContent  = reserveProduct.name;
+  document.getElementById("reserveUnitPrice").textContent    = `₱${reserveProduct.price.toFixed(2)}`;
+  document.getElementById("reserveStock").textContent        = reserveProduct.stock;
+  document.getElementById("reserveDesc").textContent         = reserveProduct.desc;
+  document.getElementById("reserveQtyVal").textContent       = 1;
+  document.getElementById("reserveNote").value               = "";
+
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const iso = tomorrow.toISOString().split("T")[0];
+  document.getElementById("reserveDate").value = iso;
+  document.getElementById("reserveDate").min   = iso;
+
+  updateReserveTotal();
+
+  document.getElementById("reserveOverlay").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeReserveModal(e) {
+  if (e.target === document.getElementById("reserveOverlay")) closeReserveModalDirect();
+}
+function closeReserveModalDirect() {
+  document.getElementById("reserveOverlay").classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function changeReserveQty(delta) {
+  reserveQty = Math.max(1, Math.min(reserveProduct.stock, reserveQty + delta));
+  document.getElementById("reserveQtyVal").textContent = reserveQty;
+  updateReserveTotal();
+}
+
+function updateReserveTotal() {
+  if (!reserveProduct) return;
+  const total = reserveProduct.price * reserveQty;
+  document.getElementById("reserveTotalVal").textContent = `₱${total.toFixed(2)}`;
+  const dateVal = document.getElementById("reserveDate").value;
+  if (dateVal) {
+    const d = new Date(dateVal + "T00:00:00");
+    const fmt = d.toLocaleDateString("en-PH", { month: "short", day: "numeric", year: "numeric" });
+    document.getElementById("reserveSummaryText").textContent =
+      `${reserveQty} × ${reserveProduct.name} · Pick-up ${fmt} · Total ₱${total.toFixed(2)}`;
+  } else {
+    document.getElementById("reserveSummaryText").textContent = "Select a date and quantity to confirm";
+  }
+}
+
+function confirmReservation() {
+  const dateVal = document.getElementById("reserveDate").value;
+  if (!dateVal) { alert("Please select a pickup date."); return; }
+  const d = new Date(dateVal + "T00:00:00");
+  const fmt = d.toLocaleDateString("en-PH", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  closeReserveModalDirect();
+  showToast(`✅ ${reserveProduct.name} reserved for ${fmt}!`);
+}
+
+document.getElementById("reserveDate").addEventListener("input", updateReserveTotal);
+
+let buyNowProduct = null;
+let buyNowQty = 1;
+
+function openBuyNowModal(id) {
+  buyNowProduct = products.find(x => x.id === id);
+  buyNowQty = 1;
+
+ 
+  const preview  = document.getElementById("buyNowImgPreview");
+  const fallback = document.getElementById("buyNowEmojiFallback");
+  if (productImages[id]) {
+    preview.src = productImages[id];
+    preview.style.display = "block";
+    fallback.style.display = "none";
+  } else {
+    preview.style.display = "none";
+    fallback.textContent  = buyNowProduct.emoji;
+    fallback.style.display = "flex";
+  }
+
+  document.getElementById("buyNowProductCat").textContent  = buyNowProduct.cat;
+  document.getElementById("buyNowProductName").textContent = buyNowProduct.name;
+  document.getElementById("buyNowUnitPrice").textContent   = `₱${buyNowProduct.price.toFixed(2)}`;
+  document.getElementById("buyNowStockBadge").textContent  = `${buyNowProduct.stock} in stock`;
+  document.getElementById("buyNowQtyVal").textContent      = 1;
+  document.getElementById("buyNowNote").value              = "";
+
+  updateBuyNowTotal();
+
+  document.getElementById("buyNowOverlay").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeBuyNowModal(e) {
+  if (e.target === document.getElementById("buyNowOverlay")) closeBuyNowDirect();
+}
+function closeBuyNowDirect() {
+  document.getElementById("buyNowOverlay").classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function changeBuyNowQty(delta) {
+  buyNowQty = Math.max(1, Math.min(buyNowProduct.stock, buyNowQty + delta));
+  document.getElementById("buyNowQtyVal").textContent = buyNowQty;
+  updateBuyNowTotal();
+}
+
+function updateBuyNowTotal() {
+  if (!buyNowProduct) return;
+  const productTotal = buyNowProduct.price * buyNowQty;
+  const grandTotal   = productTotal + 50;
+  document.getElementById("buyNowProductTotal").textContent = `₱${productTotal.toFixed(2)}`;
+  document.getElementById("buyNowTotalVal").textContent     = `₱${grandTotal.toFixed(2)}`;
+}
+
+function confirmBuyNow() {
+  addToCart(buyNowProduct.id, buyNowQty);
+  closeBuyNowDirect();
+  showToast(`🛒 Order placed for ${buyNowProduct.name}!`);
+}
+
+function showToast(msg) {
+  const toast = document.getElementById("cartToast");
+  document.getElementById("cartToastMsg").textContent = msg;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 2600);
+}
+
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  currentModalProduct = p;
+  modalQty = 1;
+  document.getElementById("modalQtyVal").textContent = 1;
+
+  const emojiEl = document.getElementById("modalEmoji");
+  const imgWrap = document.getElementById("productModalImgWrap");
+  if (productImages[p.id]) {
+    emojiEl.style.display = "none";
+    let imgEl = document.getElementById("modalProductImg");
+    if (!imgEl) {
+      imgEl = document.createElement("img");
+      imgEl.id = "modalProductImg";
+      imgEl.style.cssText = "width:100%;height:100%;object-fit:cover;border-radius:0;";
+      imgWrap.appendChild(imgEl);
+    }
+    imgEl.src = productImages[p.id];
+    imgEl.style.display = "block";
+  } else {
+    emojiEl.style.display = "flex";
+    const imgEl = document.getElementById("modalProductImg");
+    if (imgEl) imgEl.style.display = "none";
+  }
+  document.getElementById("modalBadge").textContent  = p.badge;
+  document.getElementById("modalCat").textContent    = p.cat;
+  document.getElementById("modalName").textContent   = p.name;
+  document.getElementById("modalPrice").textContent  = `₱${p.price.toFixed(2)}`;
+  document.getElementById("modalDesc").textContent   = p.desc;
+  document.getElementById("modalStock").textContent  = `${p.stock} units`;
+  new bootstrap.Modal(document.getElementById("productModal")).show();
+}
+
+document.getElementById("modalQtyMinus").addEventListener("click", () => {
+  if (modalQty > 1) { modalQty--; document.getElementById("modalQtyVal").textContent = modalQty; }
+});
+document.getElementById("modalQtyPlus").addEventListener("click", () => {
+  modalQty++; document.getElementById("modalQtyVal").textContent = modalQty;
+});
+document.getElementById("modalAddCart").addEventListener("click", () => {
+  addToCart(currentModalProduct.id, modalQty);
+  bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
+});
+document.getElementById("modalBuyNow").addEventListener("click", () => {
+  const id = currentModalProduct.id;
+  bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
+  setTimeout(() => openBuyNowModal(id), 300);
+});
+document.getElementById("modalReserve").addEventListener("click", () => {
+  const id = currentModalProduct.id;
+  bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
+  setTimeout(() => openReserveModal(id), 300);
+});
+
+document.querySelectorAll(".cat-filter-item").forEach(item => {
+  item.addEventListener("click", () => {
+    document.querySelectorAll(".cat-filter-item").forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
+    activeCategory = item.dataset.cat;
+    renderProducts();
+  });
+});
+
+document.getElementById("priceSlider").addEventListener("input", function() {
+  maxPrice = parseInt(this.value);
+  document.getElementById("priceVal").textContent = maxPrice === 500 ? "Up to ₱500" : `Up to ₱${maxPrice}`;
+  renderProducts();
+});
+
+document.getElementById("sidebarSearch").addEventListener("input", function() {
+  searchQuery = this.value;
+  renderProducts();
+});
+
+document.getElementById("sortSelect").addEventListener("change", function() {
+  sortOrder = this.value;
+  renderProducts();
+});
+
+document.getElementById("gridViewBtn").addEventListener("click", function() {
+  isGridView = true;
+  this.classList.add("active");
+  document.getElementById("listViewBtn").classList.remove("active");
+  renderProducts();
+});
+document.getElementById("listViewBtn").addEventListener("click", function() {
+  isGridView = false;
+  this.classList.add("active");
+  document.getElementById("gridViewBtn").classList.remove("active");
+  renderProducts();
+});
+
+function resetFilters() {
+  activeCategory = "All";
+  maxPrice = 500;
+  searchQuery = "";
+  sortOrder = "default";
+  document.querySelectorAll(".cat-filter-item").forEach(i => i.classList.remove("active"));
+  document.querySelector('.cat-filter-item[data-cat="All"]').classList.add("active");
+  document.getElementById("priceSlider").value = 500;
+  document.getElementById("priceVal").textContent = "Up to ₱500";
+  document.getElementById("sidebarSearch").value = "";
+  document.getElementById("sortSelect").value = "default";
+  renderProducts();
+}
+
+
+const scrollTopBtn = document.getElementById("scrollTop");
+window.addEventListener("scroll", () => scrollTopBtn.classList.toggle("visible", window.scrollY > 400));
+scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const catParam = urlParams.get("cat");
+if (catParam) {
+  const matchedItem = document.querySelector(`.cat-filter-item[data-cat="${catParam}"]`);
+  if (matchedItem) {
+    document.querySelectorAll(".cat-filter-item").forEach(i => i.classList.remove("active"));
+    matchedItem.classList.add("active");
+    activeCategory = catParam;
+  }
+}
+
+
+const searchParam = urlParams.get("search");
+if (searchParam) {
+  searchQuery = searchParam;
+  const searchInput = document.getElementById("sidebarSearch");
+  searchInput.value = searchParam;        
+  searchInput.scrollIntoView({ behavior: "smooth", block: "center" }); 
+}
+
+function toggleMobileFilters() {
+  const sidebar = document.getElementById("shopSidebar");
+  const chevron = document.getElementById("filterChevron");
+  sidebar.classList.toggle("sidebar-open");
+  chevron.classList.toggle("bi-chevron-down");
+  chevron.classList.toggle("bi-chevron-up");
+}
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
